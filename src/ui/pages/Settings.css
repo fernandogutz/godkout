@@ -1,0 +1,9 @@
+.settings {
+    color: white;
+    display: block;
+}
+
+.settings__option {
+    border-bottom: 1px solid var(--bg2);
+    padding: 8px;
+}

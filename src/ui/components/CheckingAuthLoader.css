@@ -1,0 +1,33 @@
+.loading {
+    padding-top: 60px;
+    width: 100%;
+    margin: 24px 0px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loading p {
+    margin-bottom: 24px;
+}
+
+.loading__square {
+    background-color: #efb810;
+    height: 32px;
+    width: 32px;
+    animation-name: rotation;
+    animation-duration: 2500ms;
+    animation-iteration-count: infinite;
+    animation-delay: 300ms;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

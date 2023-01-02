@@ -1,0 +1,55 @@
+.header {
+    padding: 12px 0px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--bg3);
+}
+
+.subHeader {
+    border: none;
+    padding: 0;
+}
+
+.header__logo {
+    color: var(--primary);
+    margin: 0;
+    font-size: 28px;
+    font-family: Bebas Neue;
+    font-weight: 500;
+}
+
+.header__title {
+    color: var(--color1);
+}
+
+.header__settings {
+    width: 32px;
+    height: 32px;
+    background-color: var(--bg3);
+    color: var(--color1);
+    border-radius: 32px;
+}
+
+.header__settings p {
+    text-align: center;
+    border-radius: 32px;
+    line-height: 32px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.header__profile-img {
+    height: 32px;
+    border-radius: 32px;
+}
+
+@media (max-width: 632px) {
+    .header {
+        padding: 12px 16px;
+    }
+
+    .subHeader {
+        padding: 0;
+    }
+}

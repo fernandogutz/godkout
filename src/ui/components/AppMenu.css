@@ -1,0 +1,29 @@
+.menuMobile {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg1);
+    border-top: 1px solid var(--bg3);
+    padding: 12px 0px 12px 0px;
+    position: fixed;
+    bottom: 0;
+    max-width: 600px;
+}
+
+.menuMobile__item {
+    width: calc(100%/3);
+    text-align: center;
+}
+
+.menuMobile a {
+    font-size: 24px;
+    color: var(--color3);
+    text-align: center;
+    padding: 12px;
+}
+
+.menuMobile__item .active {
+    font-weight: bold;
+    color: white;
+}
