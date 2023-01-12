@@ -1,6 +1,7 @@
-import { checkingCredentials, login, setErrors, setErrorsRegister } from "./authSlice";
+import { checkingCredentials, login, setErrors, setErrorsRegister, setUserData } from "./authSlice";
 import { useCheckCredentials } from '../../auth/hooks/useCheckCredentials'
 import { useRegisterUser } from "../../auth/hooks/useRegisterUser";
+import axios from "axios";
 
 export const checkingAuthentication = (identifier, password) => {
     return async (dispatch) => {
@@ -18,6 +19,7 @@ export const checkingAuthentication = (identifier, password) => {
                 jwt: response.jwt,
                 email: response.email,
                 displayName: response.displayName,
+                photoURL: response.photoURL,
                 id: response.id,
                 username: response.username
             }));
@@ -29,6 +31,7 @@ export const checkingAuthentication = (identifier, password) => {
             localStorage.setItem('username', response.username);
 
             dispatch(checkingCredentials('authenticated'));
+            dispatch(getUserData(response.id));
             
         } else {
             dispatch(setErrors(response.error));
@@ -60,4 +63,31 @@ export const registerUser = (email, username, password, getAds) => {
         }
 
     }
+}
+
+export const getUserData = id => {
+
+    return dispatch => {
+        
+        
+        // QUERY
+        const API = `http://localhost:1337/api/users/${id}?populate=*`;
+        axios.get(API, {
+            headers: {
+                'Authorization': 'Bearer 75205b7aea651ba25f9b97fe5a9b524b9c8f281ee3fd0e4df90069bdcdec9de758498b7301e837dd23e0fade54eeca3c58fe7fa2c879671a279cd776d7bd0fd1f7272e37640cb32e36a4d428631dc022ae470cf9d920981acd21d08afe9fb58c48e76b8a1fb768bb11a52a8afb182d86abb6395779dd3601ef130c644dfc9dfa'
+            }
+        }).then(response => {
+            //console.log(id)
+            //console.log(response.data.profileImg.formats.thumbnail.url);
+            const userData = {
+                photoURL: `http://localhost:1337${response.data.profileImg.formats.thumbnail.url}`
+            }
+            dispatch(setUserData(userData))
+
+        }).catch(error => {
+
+        });
+
+    }
+
 }

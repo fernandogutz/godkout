@@ -25,7 +25,7 @@ const Settings = () => {
                 <div className="settings">
                     <p className="settings__option">Dark Mode</p> {/* Simular checkbox, on/off */}
                     <p className="settings__option">Idioma</p> {/* Options, creo que funcionalmente podría meter todos los textos con su variación en Inglés en Strapi, y al cambiar esta configuración, cambiaré el context.textos */}
-                    <p className="settings__option" onClick={onLogout} >Cerrar Sesión</p>
+                    <p className="settings__option settings__logout" onClick={onLogout} >Cerrar Sesión</p>
                 </div>
             </div>
         </>

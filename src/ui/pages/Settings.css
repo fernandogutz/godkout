@@ -1,9 +1,14 @@
 .settings {
-    color: white;
     display: block;
 }
 
 .settings__option {
     border-bottom: 1px solid var(--bg2);
     padding: 8px;
+    color: var(--color4);
+}
+
+.settings__logout {
+    cursor: pointer;
+    color: var(--color2);
 }

@@ -1,0 +1,112 @@
+.markItem__card {
+    border-radius: 8px 8px 0 0;
+    background-color: var(--bg2);
+    padding: 0px;
+    padding: 12px;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.markItem__more-info {
+    background-color: var(--bg3);
+    margin-bottom: 12px;
+    margin-top: 0;
+    border-radius: 0px 0px 8px 8px;
+    padding: 16px;
+    text-align: left;
+    display: none;
+
+}
+
+.markItem__more-info iframe {
+    border-radius: 8px;
+}
+
+.scoreType {
+    text-align: end;
+    padding-right: 28px;
+}
+
+.markItem__group {
+    display: flex;
+    align-items: center;
+}
+
+.markItem__place {
+    background-color: var(--bg3);
+    padding: 8px;
+    font-size: 20px;
+}
+
+.place1{
+    background-color: var(--gold);
+    color: #101010;
+    font-weight: bold;
+    font-size: 24px;
+
+}
+
+.place2{
+    background-color: var(--silver);
+    color: #101010;
+    font-weight: bold;
+    font-size: 24px;
+
+}
+
+.place3{
+    background-color: var(--bronze);
+    color: #101010;
+    font-weight: bold;
+    font-size: 24px;
+
+}
+
+.markItem__username {
+    color: var(--color2);
+    text-decoration: underline;
+    padding-left: 8px;
+}
+
+.markItem__username:hover {
+    color: var(--primary);
+}
+
+.markItem__score {
+    font-size: 18px;
+    color: var(--color2);
+    display: flex;
+    align-items: center;
+}
+
+#verificationMark {
+    font-size: 13px;
+    padding: 0px 4px;
+}
+
+.verificatedGreen {
+    color: var(--verificated);
+}
+
+.not-verificated {
+    color: var(--color4);
+}
+
+.open-toggle-mark {
+    color: var(--color2);
+    font-size: 12px;
+    padding-left: 12px;
+}
+
+/* 
+1. Maqutar el rankingList.
+2. Dejar el More Info inservible por ahora, luego será un toggle.
+3. Es importante darle estilo de link al username y linkearlo a la página del atleta enviando la info en las props.
+4. Crear la página de atleta y dejarla parecida a la de TikTok.
+5. Crear página de Create Mark
+
+*/

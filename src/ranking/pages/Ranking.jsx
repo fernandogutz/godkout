@@ -28,7 +28,6 @@ const Ranking = () => {
         </div>
 
         <FiltersRanking></FiltersRanking>
-        <ListAthletes></ListAthletes>
       </div>
     </>
   )

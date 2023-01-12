@@ -5,11 +5,15 @@
   --color1: #ffffff;
   --color2: #d6d6d6;
   --color3: #adadad;
+  --color4: #666666;
   --primary: #efb810;
   --primary2: #fae299;
   --error: #b11d1d;
   --success: #74C335;
-  --verificated: #3588C3;
+  --verificated: #74bff4;
+  --gold: #e8b34b;
+  --silver: #c0c0c0;
+  --bronze: #a97142;
 }
 
 body {
@@ -24,8 +28,21 @@ body {
   color: var(--color2);
   width: 100%;
   display: flex;
+  overflow-x: hidden;
   justify-content: center;
   
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--bg1);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--bg3);
+  border-radius: 4px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
 }
 
 * {
@@ -43,7 +60,7 @@ input, button, select {
 }
 
 .content {
-  padding: 32px 16px;
+  padding: 32px 16px 80px 16px;
 }
 
 a {
@@ -160,6 +177,14 @@ a {
   width: calc(600px - 80px);
 }
 
+.select {
+  background-color: var(--bg3);
+  border: none;
+  padding: 8px;
+  color: var(--color2);
+  width: calc(600px - 32px);
+}
+
 .card__label {
   margin: 16px 0px 4px 0px;
 }
@@ -171,5 +196,9 @@ a {
 
   .card__select {
     width: calc(100vw - 80px);
+  }
+
+  .select {
+    width: calc(100vw - 32px);
   }
 }

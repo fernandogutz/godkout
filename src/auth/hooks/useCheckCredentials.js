@@ -24,6 +24,8 @@ export const useCheckCredentials = async (identifier, password) => {
                         error: null
                     }
 
+                    console.log(response);
+
                 }
 
             })

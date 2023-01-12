@@ -1,0 +1,36 @@
+.user {
+    padding-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.user__data-profile {
+    padding-bottom: 32px;
+}
+
+.user__profile-img {
+    width: 132px;
+    height: 132px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin-bottom: 12px;
+}
+
+.user__displayName {
+    padding-bottom: 4px;
+    font-size: 18px;
+    color: var(--color2);
+}
+
+.user__bio {
+    font-size: 16px;
+    color: var(--color3);
+    font-weight: 400;
+}
+
+
+
+
+

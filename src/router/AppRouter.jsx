@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import NotFound from "../ui/pages/NotFound";
-import Profile from "../profile/Profile";
+import Profile from "../profile/pages/Profile";
 import Ranking from "../ranking/pages/Ranking";
 import Target from "../target/Target";
 import Search from "../explore/pages/Search";
@@ -15,7 +15,7 @@ const AppRouter = () => {
             <Routes>
                 <Route path="/" element={<Navigate to={'/ranking'} />} />
                 <Route path="/ranking" element={<Ranking />} />
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/u/:username" element={<Profile />} />
                 <Route path="/target" element={<Target />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/create-mark" element={<CreateMark />} />

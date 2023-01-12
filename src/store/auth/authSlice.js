@@ -48,8 +48,9 @@ export const authSlice = createSlice({
         },
         //Login errors
         setErrors: (state, action) => { 
-            state.errorMessage = action.payload;
+            state.errorMessage = action.payload; // Primero guardar el mensaje que llega de Strapi
 
+            // EN base al mensaje que llegó de Strapi, setear otro mensaje en español para mostrar a los usuarios.
             switch (action.payload) {
                 case 'identifier is a required field':
                     state.errorMessageFrontend = 'Debe ingresar su email o username';
@@ -68,7 +69,7 @@ export const authSlice = createSlice({
         },
         //Register errors
         setErrorsRegister: (state, action) => { 
-            state.errorMessageRegister = action.payload;
+            state.errorMessageRegister = action.payload; // Primero guardar el mensaje que llega de Strapi
 
             //TODO: Estos casos son un copy paste de los errores de Login, por lo cual siempre se verá el default
             switch (action.payload) {
@@ -86,10 +87,13 @@ export const authSlice = createSlice({
 
             }
             
+        },
+        setUserData: (state, action) => {
+            state.photoURL = action.payload.photoURL;
         }
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { login, logout, checkingCredentials, setErrors, setErrorsRegister } = authSlice.actions;
+export const { login, logout, checkingCredentials, setErrors, setErrorsRegister, setUserData } = authSlice.actions;

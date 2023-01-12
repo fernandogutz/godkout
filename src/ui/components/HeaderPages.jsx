@@ -18,9 +18,7 @@ const HeaderPages = ({title}) => {
 
                 <div className="header__title">{title}</div>
 
-                <Link to='/profile'>
-                    <img src={ferImg} alt="foto de perfil del atleta" className="header__profile-img" />
-                </Link>
+                <div></div>
 
             </div>
         </>
