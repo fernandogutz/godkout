@@ -1,8 +1,8 @@
 import React from 'react'
+import { verificatedMessage } from '../../ranking/helpers/verificatedMessage';
 import './MarkItem.css';
 
 const MarkItem = ({ marks }) => {
-
 
     const toggleMark = (event) => {
         let index = event.target.attributes.index.value;
@@ -20,20 +20,19 @@ const MarkItem = ({ marks }) => {
         }
     }
 
-
     const listMarks = () => {
         return (
             (marks.map((mark,index) => (
                 <div className='markItem' key={mark.id}>
                     <div className="markItem__card" onClick={toggleMark} index={index}>
                         <div className="markItem__group" index={index}>
-                            <p index={index}>{mark.attributes.elements.data[0].attributes.name}</p>
+                            <p index={index}>{mark.attributes.element.data.attributes.name}</p>
 
                         </div>
 
                         <div className="markItem__group" index={index}>
                             <div className="markItem__score" index={index}>
-                                <span index={index}>{mark.attributes.reps}</span><span index={index} id='verificationMark' className={mark.attributes.verificated == true ? 'verificatedGreen' : 'not-verificated'}><i index={index} className="fa-solid fa-circle-check"></i></span>
+                                <span index={index}>{mark.attributes.reps}</span><span index={index} id='verificationMark' className={mark.attributes.verificated == 'verificated' ? 'verificatedGreen' : 'not-verificated'}><i index={index} className="fa-solid fa-circle-check"></i></span>
                             </div>
                             <div className='open-toggle-mark' index={index}>
                                 <i index={index} className="fa-solid fa-angle-right"></i>
@@ -42,11 +41,7 @@ const MarkItem = ({ marks }) => {
                     </div>
 
                     <div className="markItem__more-info" id={`moreInfo${index}`}>
-                        <p> {mark.attributes.verificated
-                            ? <span id='verificationMark' className='verificatedGreen'><i className="fa-solid fa-circle-check"></i> Récord Aprobado</span>
-                            : <span id='verificationMark' className='not-verificated'><i className="fa-solid fa-circle-check"></i> Récord no verificado</span>}
-                        </p>
-
+                        <p> {verificatedMessage(mark.attributes.verificated)} </p>
                         <p>{mark.attributes.dateCreatedMark} (Y-m-d)</p>
                         <br />
                         <p>Registro: </p>

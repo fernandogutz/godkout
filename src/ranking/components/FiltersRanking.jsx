@@ -24,14 +24,14 @@ const FiltersRanking = () => {
     const initialForm = {
         selectGender: 'male',
         selectArea: 'Reps BW',
-        selectElement: 'Pull Ups Masculino'
+        selectElement: 'Pull Ups'
     }
     
     const { elements, activeElement, disabledFilterBtn, latestQueryElement, marks, suffix } = useSelector(state => state.ranking);
 
     useEffect(() => {
-        if(initialForm.selectGender === 'male' && initialForm.selectArea === 'Reps BW' && activeElement === 'Pull Ups Masculino') {
-            dispatch(getElementsByAreaAndGender(initialForm.selectGender, initialForm.selectArea));
+        if(initialForm.selectGender === 'male' && initialForm.selectArea === 'Reps BW' && activeElement === 'Pull Ups') {
+            dispatch(getElementsByAreaAndGender(initialForm.selectArea));
             dispatch(getMarksByElements(activeElement, initialForm.selectGender));
 
         }
@@ -62,17 +62,11 @@ const FiltersRanking = () => {
         console.log(`Area: ${selectArea}`);
         console.log(`Element: ${selectElement}`);
         dispatch( getMarksByElements(selectElement, selectGender, selectArea) );
-
         
     }
 
-    const updateElementsByGender = (event) => {
-        dispatch(getElementsByAreaAndGender(event.target.value, selectArea));
-
-    }
-
     const updateElementsByArea = (event) => {
-        dispatch(getElementsByAreaAndGender(selectGender, event.target.value));
+        dispatch(getElementsByAreaAndGender(event.target.value));
 
     }
 
@@ -88,7 +82,6 @@ const FiltersRanking = () => {
                         name='selectGender'
                         className='card__select'
                         onChange={onInputChange}
-                        onChangeCapture={updateElementsByGender}
                     >
                         <option value="male">Masculina</option>
                         <option value="female">Femenina</option>

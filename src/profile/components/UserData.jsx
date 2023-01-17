@@ -16,7 +16,9 @@ const UserData = ({ user }) => {
     
     const onChangeArea = (event) => {
         setArea(event.target.value);
-        const API = `http://localhost:1337/api/marks?populate=*&filters[elements][area][name][$eq]=${event.target.value}&filters[users_permissions_user][username][$eq]=${user.username}`;
+        console.log(user.username);
+        console.log(event.target.value);
+        const API = `http://localhost:1337/api/marks?populate=*&filters[element][area][name][$eq]=${event.target.value}&filters[users_permissions_user][username][$eq]=${user.username}`;
         setLoadingMarks(true);
         axios.get(API, {
             headers: {
@@ -24,7 +26,9 @@ const UserData = ({ user }) => {
             }
         }).then(response => {
             setMarks(response.data.data);
-            console.log(response.data)
+            console.log(response.data.data)
+            console.log(response.data.data)
+            console.log(response.data.data)
             setLoadingMarks(false);
             
         }).catch(error => {
@@ -33,7 +37,7 @@ const UserData = ({ user }) => {
         
     }
     
-    const API = `http://localhost:1337/api/marks?populate=*&filters[elements][area][name][$eq]=Reps BW&filters[users_permissions_user][username][$eq]=${user.username}`;
+    const API = `http://localhost:1337/api/marks?populate=*&filters[element][area][name][$eq]=Reps BW&filters[users_permissions_user][username][$eq]=${user.username}`;
     useEffect(() => {
         setLoadingMarks(true);
         axios.get(API, {

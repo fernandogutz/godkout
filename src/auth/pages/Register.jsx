@@ -1,8 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 import { useForm } from "../../hooks/useForm";
 import { registerUser } from "../../store/auth/thunks";
+import { showPassword } from "../helpers/showPassword";
+
+import './Register.css'
 
 const Register = () => {
 
@@ -42,7 +46,6 @@ const Register = () => {
       dispatch(registerUser(email, username, password, getAds));
     }
   }
-
 
   const dataValidate = () => {
 
@@ -134,15 +137,19 @@ const Register = () => {
           />
 
           <label className="card__label" htmlFor="password">Contraseña</label>
-          <input
-            className="card__input"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="***********"
-            value={password}
-            onChange={onInputChange}
-          />
+          <div className="wrapper-input">
+            <span className='eyeBtn'  onClick={showPassword}><i class="fa-solid fa-eye"></i></span>
+            <input
+              className="card__input"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="***********"
+              value={password}
+              onChange={onInputChange}
+            />
+          </div>
+          
 
           <div className="card__checkbox-container">
             <input 

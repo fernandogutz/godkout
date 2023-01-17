@@ -1,26 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ferImg from '../../profile/img/fer.jpg';
+import { verificatedMessage } from '../helpers/verificatedMessage';
 import './ListAthletes.css';
 
-const ListAthletes = ({ marks, area, element }) => {
-  const [sufix, setSufix] = useState('')
-  const [elementName, setElementName] = useState(element);
-
-  useEffect(() => {
-    if (area === 'Reps BW') {
-      setSufix('reps');
-
-    } else if (area === 'Statics') {
-      setSufix('seg');
-
-    } else {
-      setSufix('kgs');
-
-    }
-
-  }, [])
-
+const ListAthletes = ({ marks }) => {
+  
   const toggleMark = (event) => {
     let index = event.target.attributes.index.value;
     const moreInfo = document.querySelector(`#moreInfo${index}`);
@@ -36,13 +21,7 @@ const ListAthletes = ({ marks, area, element }) => {
       moreInfo.style.cssText = 'display: block;';
 
     }
-
-   
-
   }
-
-
-
 
   const setRanking = () => {
 
@@ -65,7 +44,7 @@ const ListAthletes = ({ marks, area, element }) => {
 
             <div className="rankingItem__group" index={index}>
               <div className="rankingItem__score" index={index}>
-                <span index={index}>{mark.attributes.reps}</span><span index={index} id='verificationMark'  className={mark.attributes.verificated == true ? 'verificatedGreen' : 'not-verificated'  }><i index={index} className="fa-solid fa-circle-check"></i></span>
+                <span index={index}>{mark.attributes.reps}</span><span index={index} id='verificationMark'  className={mark.attributes.verificated == 'verificated' ? 'verificatedGreen' : 'not-verificated'  }><i index={index} className="fa-solid fa-circle-check"></i></span>
               </div>
               <div className='open-toggle-mark' id={`open-toggle-mark${index}`} index={index} >
                 <i index={index} className="fa-solid fa-angle-right"></i>
@@ -74,11 +53,7 @@ const ListAthletes = ({ marks, area, element }) => {
           </div>
           
           <div className="rankingItem__more-info" id={`moreInfo${index}`}>
-            <p> {mark.attributes.verificated 
-                  ? <span id='verificationMark'  className='verificatedGreen'><i className="fa-solid fa-circle-check"></i> Récord Aprobado</span> 
-                  : <span id='verificationMark'  className='not-verificated'><i className="fa-solid fa-circle-check"></i> Récord no verificado</span>}
-            </p>
-
+            <p> {verificatedMessage(mark.attributes.verificated)} </p>
             <p>{mark.attributes.dateCreatedMark} (Y-m-d)</p>
             <br />
             <p>Registro: </p>

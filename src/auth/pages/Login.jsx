@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
 import { checkingAuthentication } from "../../store/auth/thunks.js";
+import { showPassword } from '../helpers/showPassword';
+
+import './Login.css';
 
 
 const Login = () => {
@@ -60,6 +63,7 @@ const Login = () => {
     
   }
 
+
   return (
     <div className="content">
       <h1 className="title__page">
@@ -83,15 +87,18 @@ const Login = () => {
           />
 
           <label className="card__label" htmlFor="password">Contraseña</label>
-          <input
-            className="card__input"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="***********"
-            value={password}
-            onChange={onInputChange}
-          />
+          <div className="wrapper-input">
+            <span className='eyeBtn'  onClick={showPassword}><i class="fa-solid fa-eye"></i></span>
+            <input
+              className="card__input"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="***********"
+              value={password}
+              onChange={onInputChange}
+            />
+          </div>
 
           <input 
             disabled={isAuthenticating}

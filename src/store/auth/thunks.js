@@ -78,7 +78,6 @@ export const getUserData = id => {
             }
         }).then(response => {
             //console.log(id)
-            //console.log(response.data.profileImg.formats.thumbnail.url);
             const userData = {
                 photoURL: `http://localhost:1337${response.data.profileImg.formats.thumbnail.url}`
             }

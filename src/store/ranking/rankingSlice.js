@@ -6,9 +6,9 @@ export const rankingSlice = createSlice({
         consultingMarks: false,
         elements: [],
         marks: null,
-        activeElement: 'Pull Ups Masculino',
+        activeElement: 'Pull Ups',
         disabledFilterBtn: false,
-        latestQueryElement: 'Pull Ups Masculino',
+        latestQueryElement: 'Pull Ups',
         suffix: 'Reps'
     },
     reducers: {

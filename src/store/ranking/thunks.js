@@ -3,17 +3,13 @@
 import axios from "axios";
 import { setActiveElement, setElements, setLatestQueryElement, setMarks, setSuffix } from "./rankingSlice";
 
-// Change Gender Or Area
-export const getElementsByAreaAndGender = (gender, area) => {
+// Change Area
+export const getElementsByAreaAndGender = (area) => {
 
     return (dispatch) => {
 
-        console.log('thunks.js: Gender '+gender + ', Area: '+area);
-        // Consulting
-        //dispatch(checkingCredentials('checking'));
-
         // QUERY
-        const API_ELEMENTS = `http://localhost:1337/api/elements?filters[gender][name][$eq]=${gender}&filters[area][name][$eq]=${area}`;
+        const API_ELEMENTS = `http://localhost:1337/api/elements?filters[area][name][$eq]=${area}`;
         axios.get(API_ELEMENTS, {
             headers: {
                 'Authorization': 'Bearer 75205b7aea651ba25f9b97fe5a9b524b9c8f281ee3fd0e4df90069bdcdec9de758498b7301e837dd23e0fade54eeca3c58fe7fa2c879671a279cd776d7bd0fd1f7272e37640cb32e36a4d428631dc022ae470cf9d920981acd21d08afe9fb58c48e76b8a1fb768bb11a52a8afb182d86abb6395779dd3601ef130c644dfc9dfa'
@@ -56,7 +52,7 @@ export const getMarksByElements = (element, gender, area) => {
 
         
         // QUERY
-        const API = `http://localhost:1337/api/marks?populate=*&filters[elements][name][$eq]=${element}&filters[elements][gender][name][$eq]=${gender}&sort=reps:desc`;
+        const API = `http://localhost:1337/api/marks?populate=*&filters[element][name][$eq]=${element}&filters[users_permissions_user][gender][$eq]=${gender}&sort=reps:desc`;
         axios.get(API, {
             headers: {
                 'Authorization': 'Bearer 75205b7aea651ba25f9b97fe5a9b524b9c8f281ee3fd0e4df90069bdcdec9de758498b7301e837dd23e0fade54eeca3c58fe7fa2c879671a279cd776d7bd0fd1f7272e37640cb32e36a4d428631dc022ae470cf9d920981acd21d08afe9fb58c48e76b8a1fb768bb11a52a8afb182d86abb6395779dd3601ef130c644dfc9dfa'
