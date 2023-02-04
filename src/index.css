@@ -107,6 +107,13 @@ a {
   padding-bottom: 12px;
 }
 
+.card__successMsg {
+  background-color: var(--success);
+  padding: 12px 8px;
+  border-radius: 8px;
+  color: #101010;
+}
+
 .card__form-bottom-msg {
   margin-top: 40px;
   margin-bottom: 12px;
