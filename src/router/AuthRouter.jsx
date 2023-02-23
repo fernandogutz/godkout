@@ -7,9 +7,9 @@ import AppRouter from "./AppRouter";
 const MainRouter = () => {
     return (
         <Routes>
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
             <Route path="/sign-up" element={<Register />} />
-            <Route path="/*" element={<Navigate to={'/login'} />} />
+            <Route path="/*" element={<Navigate to={'/'} />} />
         </Routes>
     )
 }
