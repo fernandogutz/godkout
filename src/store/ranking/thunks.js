@@ -9,10 +9,10 @@ export const getElementsByAreaAndGender = (area) => {
     return (dispatch) => {
 
         // QUERY
-        const API_ELEMENTS = `http://localhost:1337/api/elements?filters[area][name][$eq]=${area}`;
+        const API_ELEMENTS = `https://young-falls-69772.herokuapp.com/api/elements?filters[area][name][$eq]=${area}`;
         axios.get(API_ELEMENTS, {
             headers: {
-                'Authorization': 'Bearer 75205b7aea651ba25f9b97fe5a9b524b9c8f281ee3fd0e4df90069bdcdec9de758498b7301e837dd23e0fade54eeca3c58fe7fa2c879671a279cd776d7bd0fd1f7272e37640cb32e36a4d428631dc022ae470cf9d920981acd21d08afe9fb58c48e76b8a1fb768bb11a52a8afb182d86abb6395779dd3601ef130c644dfc9dfa'
+                'Authorization': 'Bearer d97ba25bbf8bf9387c12f89d7c61a834431ae96d8e3ac72056037fdfdf337c79a6085566fbd68aa1e0b3b368e5488afd1e3672ea196d5a2b7cb33342a3b39421e2f9d1923ad479cae56ea1cb188dde89ec41f30b0508ef82904cd908e6c4a6db501fdc7ace3a8848d4023420b7c36a72175583081d49ccfb0b6bd329afc7f8c8'
             }
         }).then(response => {
             //console.log(response.data.data);
@@ -52,10 +52,10 @@ export const getMarksByElements = (element, gender, area) => {
 
         
         // QUERY
-        const API = `http://localhost:1337/api/marks?populate=*&filters[element][name][$eq]=${element}&filters[users_permissions_user][gender][$eq]=${gender}&sort=reps:desc`;
+        const API = `https://young-falls-69772.herokuapp.com/api/marks?populate=*&filters[element][name][$eq]=${element}&filters[users_permissions_user][gender][$eq]=${gender}&sort=reps:desc`;
         axios.get(API, {
             headers: {
-                'Authorization': 'Bearer 75205b7aea651ba25f9b97fe5a9b524b9c8f281ee3fd0e4df90069bdcdec9de758498b7301e837dd23e0fade54eeca3c58fe7fa2c879671a279cd776d7bd0fd1f7272e37640cb32e36a4d428631dc022ae470cf9d920981acd21d08afe9fb58c48e76b8a1fb768bb11a52a8afb182d86abb6395779dd3601ef130c644dfc9dfa'
+                'Authorization': 'Bearer d97ba25bbf8bf9387c12f89d7c61a834431ae96d8e3ac72056037fdfdf337c79a6085566fbd68aa1e0b3b368e5488afd1e3672ea196d5a2b7cb33342a3b39421e2f9d1923ad479cae56ea1cb188dde89ec41f30b0508ef82904cd908e6c4a6db501fdc7ace3a8848d4023420b7c36a72175583081d49ccfb0b6bd329afc7f8c8'
             }
         }).then(response => {
             dispatch(setMarks(response.data.data))

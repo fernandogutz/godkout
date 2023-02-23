@@ -3,7 +3,7 @@
 export const useCheckCredentials = async (identifier, password) => {
 
     let fetchData = {}
-    const urlApi = 'http://localhost:1337/api/auth/local/';
+    const urlApi = 'https://young-falls-69772.herokuapp.com/api/auth/local/';
 
         await postData(urlApi, identifier, password )
             .then(response => response.json())
