@@ -67,7 +67,7 @@ const Login = () => {
   return (
     <div className="content">
       <h1 className="title__page">
-        Iniciar Sesión
+        Inicia Sesión
       </h1>
 
       <div className="card">
