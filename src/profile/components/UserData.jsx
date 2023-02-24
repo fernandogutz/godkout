@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 
-import userImg from '../img/user.jpg';
 import MarkItem from './MarkItem';
 import './UserData.css';
 
@@ -58,7 +57,7 @@ const UserData = ({ user }) => {
     return (
         <div className="user">
             <div className="user__data-profile">
-                {user.profileImg ? <img src={`https://young-falls-69772.herokuapp.com${user.profileImg.formats.thumbnail.url}`} className="user__profile-img" alt='Perfil Atleta de Calistenia'></img>: <img src={userImg} className="user__profile-img" alt='Perfil Atleta de Calistenia'></img>}
+                {user.profileImg ? <img src={`https://young-falls-69772.herokuapp.com/${user.profileImg}`} className="user__profile-img" alt='Perfil Atleta de Calistenia'></img>: <img src='/avatars/zeus.png' className="user__profile-img" alt='Perfil Atleta de Calistenia'></img>}
                 <h2 className="user__displayName">{user.displayName}</h2>
                 <p className="user__bio">{user.bio}</p>
             </div>
@@ -76,7 +75,7 @@ const UserData = ({ user }) => {
                 </select>
                 
 
-                {loadingMarks ? <p>Cargando...</p> : <MarkItem marks={marks}></MarkItem>}
+                {loadingMarks ? <p className='noMarksMessage'>Cargando...</p> : <MarkItem marks={marks}></MarkItem>}
             </div>
         </div>
     )

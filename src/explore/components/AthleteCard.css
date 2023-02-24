@@ -1,0 +1,29 @@
+.AthleteCard {
+    background-color: var(--bg2);
+    border-radius: 12px;
+    padding: 8px 16px;
+    margin: 8px 0px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--bg3);
+}
+
+.AthleteCard:hover {
+    background-color: var(--bg3);
+}
+
+.AthleteCard__username {
+    color: var(--color2);
+    text-decoration: underline;
+    padding-left: 16px;
+    font-size: 18px;
+}
+
+.AthleteCard__username:hover {
+    color: var(--primary);
+}
+
+.AthleteCard__img {
+    width: 36px;
+    border-radius: 100%;
+}

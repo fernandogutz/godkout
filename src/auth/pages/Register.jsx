@@ -139,7 +139,7 @@ const Register = () => {
 
           <label className="card__label" htmlFor="password">Contraseña</label>
           <div className="wrapper-input">
-            <span className='eyeBtn'  onClick={showPassword}><i class="fa-solid fa-eye"></i></span>
+            <span className='eyeBtn'  onClick={showPassword}><i className="fa-solid fa-eye"></i></span>
             <input
               className="card__input"
               type="password"

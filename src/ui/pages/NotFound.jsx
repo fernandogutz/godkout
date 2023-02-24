@@ -1,8 +1,14 @@
 import React from 'react'
+import HeaderHome from '../components/HeaderHome'
 
 const NotFound = () => {
   return (
-    <h1>404 Not Found</h1>
+    <>
+      <HeaderHome />
+      <div className="content">
+        <h1 className='title__page'>404: Página no encontrada</h1>
+      </div>
+    </>
   )
 }
 

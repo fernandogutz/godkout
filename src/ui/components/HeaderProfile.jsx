@@ -1,4 +1,4 @@
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { NavLink, Link, useNavigate, useParams } from 'react-router-dom';
 
 import './HeaderHome.css';
 
@@ -7,6 +7,8 @@ const HeaderProfile = ({title}) => {
     const onBackNavigate = () => {
         navigate(-1);
     }
+    
+    const { username } = useParams();
 
     return (
         <>
@@ -16,10 +18,13 @@ const HeaderProfile = ({title}) => {
 
                 <div className="header__title">@{title}</div>
 
-                <NavLink to='/settings'>
-                    <i className="fa-solid fa-gear"></i>
-                </NavLink>
+                {
+                    localStorage.getItem('username') === username 
+                        ? <NavLink to='/settings'><i className="fa-solid fa-gear"></i></NavLink>
+                        : <div></div>
 
+                }
+                
             </div>
         </>
     )

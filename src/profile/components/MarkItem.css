@@ -102,11 +102,6 @@
     padding-left: 12px;
 }
 
-/* 
-1. Maqutar el rankingList.
-2. Dejar el More Info inservible por ahora, luego será un toggle.
-3. Es importante darle estilo de link al username y linkearlo a la página del atleta enviando la info en las props.
-4. Crear la página de atleta y dejarla parecida a la de TikTok.
-5. Crear página de Create Mark
-
-*/
+.noMarksMessage {
+    padding-top: 12px;
+}

@@ -1,6 +1,6 @@
 import HeaderHome from '../../ui/components/HeaderHome'
 import FiltersRanking from '../components/FiltersRanking'
-import ListAthletes from '../components/ListAthletes'
+import './Ranking.css';
 
 const toggleFilters = () => {
   const filtersContainer = document.querySelector('#filtersContainer');
@@ -23,7 +23,7 @@ const Ranking = () => {
       <HeaderHome />
       <div className="content">
         <div className="header subHeader">
-          <h1>Ranking</h1>
+          <h1 className='title__ranking'>Ranking</h1>
           <button className='btn btn-actions' onClick={toggleFilters}><i className="fas fa-regular fa-filter"></i> <span id='textBtnFiltrar'>Filtrar</span></button>
         </div>
 

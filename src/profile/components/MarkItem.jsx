@@ -58,7 +58,7 @@ const MarkItem = ({ marks }) => {
 
     return (
         <div className="markItem">
-            {marks[0] ? listMarks() : <p>No marks in this area</p>}
+            {marks[0] ? listMarks() : <p className='noMarksMessage'>Sin marcas en la categoría seleccionada</p>}
 
         </div>
     )

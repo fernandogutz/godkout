@@ -1,0 +1,22 @@
+.searchIcon {
+    position: absolute;
+    color: var(--color4);
+    right: 12px;
+    top: 8px;
+}
+
+.wrapper-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+}
+
+.wrapper-input .card__input {
+    background-color: var(--bg3);
+    border: none;
+    padding: 8px;
+    color: var(--color2);
+    width: calc(100% - 16px)
+}

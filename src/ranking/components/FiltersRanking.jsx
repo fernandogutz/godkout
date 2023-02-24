@@ -130,7 +130,7 @@ const FiltersRanking = () => {
                     <span className='elementTitle__suffix'>{suffix}</span>
                 </h2>
 
-                {marks ? <ListAthletes marks={marks} area={selectArea} element={selectElement}/> : <p>Cargando...</p>}
+                {marks ? <ListAthletes marks={marks} area={selectArea} element={selectElement}/> : <p className='noMarksMessage'>Cargando...</p>}
                 
             </div>
         </>
