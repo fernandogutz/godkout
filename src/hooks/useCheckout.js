@@ -10,6 +10,7 @@ export const useCheckout = () => {
             id: localStorage.getItem('id'),
             jwt: localStorage.getItem('jwt'),
             username: localStorage.getItem('username'),
+            profileImg: localStorage.getItem('profileImg'),
             email: localStorage.getItem('email'),
             displayName: localStorage.getItem('displayName'),
         }));

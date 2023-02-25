@@ -6,13 +6,13 @@ import MarkItem from './MarkItem';
 import './UserData.css';
 
 const UserData = ({ user }) => {
-
+    
     const [loadingMarks, setLoadingMarks] = useState(true)
     const [marks, setMarks] = useState([])
     const [area, setArea] = useState([])
-    
+
     console.log(user);
-    
+
     const onChangeArea = (event) => {
         setArea(event.target.value);
         console.log(user.username);
@@ -29,13 +29,13 @@ const UserData = ({ user }) => {
             console.log(response.data.data)
             console.log(response.data.data)
             setLoadingMarks(false);
-            
+
         }).catch(error => {
             console.log('error: ' + error);
         });
-        
+
     }
-    
+
     const API = `https://young-falls-69772.herokuapp.com/api/marks?populate=*&filters[element][area][name][$eq]=Reps BW&filters[users_permissions_user][username][$eq]=${user.username}`;
     useEffect(() => {
         setLoadingMarks(true);
@@ -47,17 +47,21 @@ const UserData = ({ user }) => {
             setMarks(response.data.data);
             console.log(response.data.data)
             setLoadingMarks(false);
-            
+
         }).catch(error => {
             console.log('error: ' + error);
         });
 
     }, [user])
-    
+
+
     return (
+
+
         <div className="user">
+
             <div className="user__data-profile">
-                {user.profileImg ? <img src={`https://young-falls-69772.herokuapp.com/${user.profileImg}`} className="user__profile-img" alt='Perfil Atleta de Calistenia'></img>: <img src='/avatars/zeus.png' className="user__profile-img" alt='Perfil Atleta de Calistenia'></img>}
+                {user.profileImg ? <img src={`/avatars/${user.profileImg}`} className="user__profile-img" alt='Perfil Atleta de Calistenia'></img> : <img src='/avatars/zeus.png' className="user__profile-img" alt='Perfil Atleta de Calistenia'></img>}
                 <h2 className="user__displayName">{user.displayName}</h2>
                 <p className="user__bio">{user.bio}</p>
             </div>
@@ -73,7 +77,7 @@ const UserData = ({ user }) => {
                     <option value="Lifting">Street Lifting</option>
                     <option value="Statics">Estáticos</option>
                 </select>
-                
+
 
                 {loadingMarks ? <p className='noMarksMessage'>Cargando...</p> : <MarkItem marks={marks} area={area}></MarkItem>}
             </div>

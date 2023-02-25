@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import useFetch from '../../hooks/useFetch';
 
 import './HeaderHome.css';
 
 const HeaderHome = () => {
-    const { photoURL, username, status } = useSelector(state => state.auth);
+    const { profileImg, username, status } = useSelector(state => state.auth);
 
 
     return (
@@ -15,15 +16,19 @@ const HeaderHome = () => {
 
                 {
                     status === 'authenticated'
-                    ?   <Link to={`/u/${username}`}>
-                            {photoURL ? <img src={photoURL} alt="foto de perfil del atleta" className="header__profile-img" /> : <img src='/avatars/zeus.png' alt="foto de perfil del atleta" className="header__profile-img" />}
-                        
+                        ? <Link to={`/u/${username}`}>
+                            {
+                                profileImg
+                                    ? <img src={`/avatars/${profileImg}`} className="header__profile-img"></img>
+                                    : <img src='/avatars/zeus.png' className="header__profile-img"></img>
+                            }
+
                         </Link>
 
-                    : <Link to='/login'><button className='btn btn-primary'>Iniciar Sesión</button></Link>
+                        : <Link to='/login'><button className='btn btn-primary'>Iniciar Sesión</button></Link>
 
                 }
-                
+
             </div>
         </>
     )

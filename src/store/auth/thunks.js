@@ -1,7 +1,6 @@
 import { checkingCredentials, login, setErrors, setErrorsRegister, setUserData } from "./authSlice";
 import { useCheckCredentials } from '../../auth/hooks/useCheckCredentials'
 import { useRegisterUser } from "../../auth/hooks/useRegisterUser";
-import axios from "axios";
 
 export const checkingAuthentication = (identifier, password) => {
     return async (dispatch) => {
@@ -19,7 +18,7 @@ export const checkingAuthentication = (identifier, password) => {
                 jwt: response.jwt,
                 email: response.email,
                 displayName: response.displayName,
-                photoURL: response.photoURL,
+                profileImg: response.profileImg,
                 id: response.id,
                 username: response.username
             }));
@@ -29,9 +28,9 @@ export const checkingAuthentication = (identifier, password) => {
             localStorage.setItem('email', response.email);
             localStorage.setItem('displayName', response.displayName);
             localStorage.setItem('username', response.username);
+            localStorage.setItem('profileImg', response.profileImg);
 
             dispatch(checkingCredentials('authenticated'));
-            dispatch(getUserData(response.id));
             
         } else {
             dispatch(setErrors(response.error));
@@ -65,6 +64,7 @@ export const registerUser = (email, username, gender, password, getAds) => {
     }
 }
 
+/* 
 export const getUserData = id => {
 
     return dispatch => {
@@ -80,9 +80,10 @@ export const getUserData = id => {
         }).then(response => {
             //console.log(id)
             const userData = {
-                photoURL: `https://young-falls-69772.herokuapp.com${response.data.profileImg.formats.thumbnail.url}`
+                profileImg: response.data.profileImg
             }
-            dispatch(setUserData(userData))
+            dispatch(setUserData(userData));
+
 
         }).catch(error => {
 
@@ -90,4 +91,4 @@ export const getUserData = id => {
 
     }
 
-}
+} */

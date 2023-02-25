@@ -8,7 +8,7 @@ export const authSlice = createSlice({
         email: null,
         displayName: null,
         username: null,
-        photoURL: null,
+        profileImg: null,
         jwt: null,
         errorMessage: null, //login strapi msg
         errorMessageFrontend: null, //x mí en español
@@ -21,6 +21,7 @@ export const authSlice = createSlice({
             state.email = action.payload.email;
             state.displayName = action.payload.displayName;
             state.username = action.payload.username;
+            state.profileImg = action.payload.profileImg;
             state.jwt = action.payload.jwt;
             state.errorMessage = null;
             state.errorMessageFrontend = null;
@@ -33,7 +34,7 @@ export const authSlice = createSlice({
             state.email = null;
             state.displayName = null;
             state.username = null;
-            state.photoURL = null;
+            state.profileImg = null;
             state.jwt = null;
 
             state.errorMessage = null; //login strapi msg
@@ -89,7 +90,7 @@ export const authSlice = createSlice({
             
         },
         setUserData: (state, action) => {
-            state.photoURL = action.payload.photoURL;
+            state.profileImg = action.payload.profileImg;
         }
     }
 });

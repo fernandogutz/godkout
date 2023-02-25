@@ -21,10 +21,11 @@ export const useCheckCredentials = async (identifier, password) => {
                         email: response.user.email,
                         displayName: response.user.displayName,
                         username: response.user.username,
-                        error: null
+                        error: null,
+                        profileImg: response.user.profileImg
                     }
 
-                    console.log(response);
+                    console.log(fetchData);
 
                 }
 
