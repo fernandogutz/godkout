@@ -30,11 +30,8 @@ const FiltersRanking = () => {
     const { elements, activeElement, disabledFilterBtn, latestQueryElement, marks, suffix } = useSelector(state => state.ranking);
 
     useEffect(() => {
-        if(initialForm.selectGender === 'male' && initialForm.selectArea === 'Reps BW' && activeElement === 'Pull Ups') {
-            dispatch(getElementsByAreaAndGender(initialForm.selectArea));
-            dispatch(getMarksByElements(activeElement, initialForm.selectGender));
-
-        }
+        dispatch(getElementsByAreaAndGender(selectArea));
+        dispatch(getMarksByElements(activeElement, selectGender));
     
     }, [])
 
@@ -96,7 +93,7 @@ const FiltersRanking = () => {
                         onChangeCapture={updateElementsByArea}
                     >
                         <option value="Reps BW">Reps Peso Corporal</option>
-                        <option value="Lifting">Street Lifting</option>
+                        <option value="Lifting">Lifting</option>
                         <option value="Statics">Estáticos</option>
                     </select>
 

@@ -4,53 +4,56 @@ import { Link } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
 import { registerUser } from "../../store/auth/thunks";
+import AppMenu from "../../ui/components/AppMenu";
+import HeaderHome from "../../ui/components/HeaderHome";
 import { showPassword } from "../helpers/showPassword";
 
 import './Register.css'
 
 const Register = () => {
 
-  const {errorMessageRegisterFrontend} = useSelector(state => state.auth);
+  const { errorMessageRegisterFrontend } = useSelector(state => state.auth);
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
 
   // Revisar si hay errores del backend, naturalmente, no habrá errores de back y front al mismo tiempo, ya que se hace la petición solo cuando ya se ha validado la data en el front
   useEffect(() => {
-    
-    if(errorMessageRegisterFrontend) {
+
+    if (errorMessageRegisterFrontend) {
       setErrors([errorMessageRegisterFrontend]);
-    } 
+    }
 
   }, [errorMessageRegisterFrontend])
 
   // Get form user data (dynamic)
-  const { email, username, password, onInputChange } = useForm({
+  const { email, username, gender, password, onInputChange } = useForm({
     email: '',
     username: '',
+    gender: 'male',
     password: ''
   })
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(`email: ${email} \nusername: ${username} \npassword: ${password}`);
+    console.log(`email: ${email} \nusername: ${username} \ngender: ${gender} \npassword: ${password} \ngetAds: ${getAds}`);
 
-    if(dataValidate()) {
+    if (dataValidate()) {
       //console.log('Front Validado')
 
       // Persistir el error que trajo el use Effect arriba, ese error es el que guardamos en el Store y que se origina en el backend
-      if(errorMessageRegisterFrontend) {
+      if (errorMessageRegisterFrontend) {
         setErrors([errorMessageRegisterFrontend]);
-      } 
+      }
 
       //registerUser
-      dispatch(registerUser(email, username, password, getAds));
+      dispatch(registerUser(email, username, gender, password, getAds));
     }
   }
 
   const dataValidate = () => {
 
     setErrors([]);
-    
+
     if (email === '') {
       setErrors(['Email es obligatorio '])
       return;
@@ -85,9 +88,9 @@ const Register = () => {
 
     } else {
       return null;
-      
+
     }
-    
+
   }
 
 
@@ -105,75 +108,91 @@ const Register = () => {
 
 
   return (
-    <div className="content">
-      <h1 className="title__page">
-        Crear cuenta
-      </h1>
+    <>
+      <HeaderHome></HeaderHome>
 
-      <div className="card">
+      <div className="content">
+        <h1 className="title__page">
+          Crear cuenta
+        </h1>
 
-        {displayErrors()}
+        <div className="card">
 
-        <form className="card__form" onSubmit={onSubmit}>
-          <label className="card__label" htmlFor="email">Email</label>
-          <input
-            className="card__input"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="correo@gmail.com"
-            value={email}
-            onChange={onInputChange}
-          />
+          {displayErrors()}
 
-          <label className="card__label" htmlFor="email">Username</label>
-          <input
-            className="card__input"
-            type="text"
-            name="username"
-            id="username"
-            placeholder="fernandogutz"
-            value={username}
-            onChange={onInputChange}
-          />
-
-          <label className="card__label" htmlFor="password">Contraseña</label>
-          <div className="wrapper-input">
-            <span className='eyeBtn'  onClick={showPassword}><i className="fa-solid fa-eye"></i></span>
+          <form className="card__form" onSubmit={onSubmit}>
+            <label className="card__label" htmlFor="email">Email</label>
             <input
               className="card__input"
-              type="password"
-              name="password"
-              id="password"
-              placeholder="***********"
-              value={password}
+              type="email"
+              name="email"
+              id="email"
+              placeholder="correo@gmail.com"
+              value={email}
               onChange={onInputChange}
             />
-          </div>
-          
 
-          <div className="card__checkbox-container">
-            <input 
-              type='checkbox' 
-              id="getAds" 
-              name="getAds" 
-              value="getAds"
-              defaultChecked
-              onChange={(event) => onGetAdsChange(event)}
+            <label className="card__label" htmlFor="email">Username (idealmente en minúscula y sin espacios)</label>
+            <input
+              className="card__input"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Ej: fernando_gutz"
+              value={username}
+              onChange={onInputChange}
             />
-            <label className="card__label" htmlFor="getAds">Acepto recibir noticias y promociones al correo</label>
-          </div>
-          
-          <input
-            disabled={isAuthenticating}
-            type="submit"
-            value="Crear Cuenta"
-            className="btn btn-primary btn-form"
-          />
-        </form>
-        <p className='card__form-bottom-msg'>¿Ya tienes una cuenta? <Link to='/login' className='link-primary'>Iniciar Sesión</Link> </p>
+
+            <label className='card__label' htmlFor="gender">Género</label>
+            <select
+              id="gender"
+              name='gender'
+              className='card__select'
+              onChange={onInputChange}
+            >
+              <option value="male">Masculino</option>
+              <option value="female">Femenino</option>
+            </select>
+
+            <label className="card__label" htmlFor="password">Contraseña (mínimo 8 caracteres)</label>
+            <div className="wrapper-input">
+              <span className='eyeBtn' onClick={showPassword}><i className="fa-solid fa-eye"></i></span>
+              <input
+                className="card__input"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="***********"
+                value={password}
+                onChange={onInputChange}
+              />
+            </div>
+
+
+            <div className="card__checkbox-container">
+              <input
+                type='checkbox'
+                id="getAds"
+                name="getAds"
+                value="getAds"
+                defaultChecked
+                onChange={(event) => onGetAdsChange(event)}
+              />
+              <label className="card__label" htmlFor="getAds">Acepto recibir noticias y promociones al correo</label>
+            </div>
+
+            <input
+              disabled={isAuthenticating}
+              type="submit"
+              value="Crear Cuenta"
+              className="btn btn-primary btn-form"
+            />
+          </form>
+          <p className='card__form-bottom-msg'>¿Ya tienes una cuenta? <Link to='/login' className='link-primary'>Iniciar Sesión</Link> </p>
+        </div>
       </div>
-    </div>
+    </>
+
   )
 }
 

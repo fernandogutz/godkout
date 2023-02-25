@@ -1,10 +1,10 @@
 
-export const useRegisterUser = async (email, username, password, getAds) => {
+export const useRegisterUser = async (email, username, gender, password, getAds) => {
 
     let fetchData = {}
     const urlApi = 'https://young-falls-69772.herokuapp.com/api/users';
 
-        await postData(urlApi, email, username, password, getAds )
+        await postData(urlApi, email, username, gender, password, getAds )
             .then(response => response.json())
             .then( (response) => {
                 if (response.error) {
@@ -26,7 +26,7 @@ export const useRegisterUser = async (email, username, password, getAds) => {
     return fetchData;
 }
 
-const postData = (urlApi, email, username, password, getAds) => {
+const postData = (urlApi, email, username, gender, password, getAds) => {
     const response = fetch(urlApi, {
         method: "POST",
         headers: {
@@ -37,6 +37,7 @@ const postData = (urlApi, email, username, password, getAds) => {
             "username": username,
             "password": password,
             "email": email,
+            "gender": gender,
             "role": 3,
             "confirmed": true,
             "getAds": getAds

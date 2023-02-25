@@ -14,7 +14,7 @@ const AppMenu = () => {
         </div>
 
         <div className="menuMobile__item">
-            <NavLink to='/target'><i className="fa-solid fa-bullseye"></i></NavLink>
+            <NavLink to='/target'><i className="fa-solid fa-chart-line"></i></NavLink>
         </div>
 
         <div className="menuMobile__item">

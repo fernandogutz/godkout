@@ -75,7 +75,7 @@ const UserData = ({ user }) => {
                 </select>
                 
 
-                {loadingMarks ? <p className='noMarksMessage'>Cargando...</p> : <MarkItem marks={marks}></MarkItem>}
+                {loadingMarks ? <p className='noMarksMessage'>Cargando...</p> : <MarkItem marks={marks} area={area}></MarkItem>}
             </div>
         </div>
     )

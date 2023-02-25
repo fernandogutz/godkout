@@ -8,12 +8,13 @@ import Search from "../explore/pages/Search";
 import AppMenu from "../ui/components/AppMenu";
 import Settings from "../ui/pages/Settings";
 import CreateMark from "../mark/pages/CreateMark";
+import HomeInfo from "../ui/pages/HomeInfo";
 
 const AppRouter = () => {
     return (
         <>  
             <Routes>
-                <Route path="/" element={<Navigate to={'/ranking'} />} />
+                <Route path="/" element={<HomeInfo></HomeInfo>} />
                 <Route path="/ranking" element={<Ranking />} />
                 <Route path="/u/:username" element={<Profile />} />
                 <Route path="/target" element={<Target />} />

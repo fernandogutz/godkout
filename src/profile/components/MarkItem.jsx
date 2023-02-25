@@ -2,7 +2,16 @@ import React from 'react'
 import { verificatedMessage } from '../../ranking/helpers/verificatedMessage';
 import './MarkItem.css';
 
-const MarkItem = ({ marks }) => {
+const MarkItem = ({ marks, area }) => {
+    let suffix = 'reps';
+
+    if(area === 'Lifting') {
+        suffix = 'kgs';
+
+    } else if(area === 'Statics') {
+        suffix = 's';
+        
+    }
 
     const toggleMark = (event) => {
         let index = event.target.attributes.index.value;
@@ -32,7 +41,7 @@ const MarkItem = ({ marks }) => {
 
                         <div className="markItem__group" index={index}>
                             <div className="markItem__score" index={index}>
-                                <span index={index}>{mark.attributes.reps}</span><span index={index} id='verificationMark' className={mark.attributes.verificated == 'verificated' ? 'verificatedGreen' : 'not-verificated'}><i index={index} className="fa-solid fa-circle-check"></i></span>
+                                <span index={index}>{`${mark.attributes.reps} ${suffix}`}</span><span index={index} id='verificationMark' className={mark.attributes.verificated == 'verificated' ? 'verificatedGreen' : 'not-verificated'}><i index={index} className="fa-solid fa-circle-check"></i></span>
                             </div>
                             <div className='open-toggle-mark' index={index}>
                                 <i index={index} className="fa-solid fa-angle-right"></i>

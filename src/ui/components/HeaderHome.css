@@ -14,9 +14,17 @@
 .header__logo {
     color: var(--primary);
     margin: 0;
-    font-size: 28px;
+    font-size: 26px;
     font-family: Bebas Neue;
     font-weight: 500;
+}
+
+.header__logo i {
+    font-size: 20px;
+}
+
+.header__logo:hover {
+    color: var(--color1);
 }
 
 .header__title {

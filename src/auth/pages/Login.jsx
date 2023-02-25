@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
 import { checkingAuthentication } from "../../store/auth/thunks.js";
+import AppMenu from '../../ui/components/AppMenu';
+import HeaderHome from '../../ui/components/HeaderHome';
 import { showPassword } from '../helpers/showPassword';
 
 import './Login.css';
@@ -11,21 +13,21 @@ import './Login.css';
 
 const Login = () => {
 
-  const {status, errorMessageFrontend} = useSelector(state => state.auth); // Acceder a un valor del Store, del authSlice específicamente
+  const { status, errorMessageFrontend } = useSelector(state => state.auth); // Acceder a un valor del Store, del authSlice específicamente
   const [errors, setErrors] = useState([]);
 
   const { identifier, password, onInputChange } = useForm({
     identifier: '',
     password: ''
   })
-  
+
   const isAuthenticating = useMemo(() => status === 'checking', [status]);
-  
-  
+
+
   const dispatch = useDispatch();
   const onSubmit = (event) => {
     event.preventDefault();
-    dispatch( checkingAuthentication(identifier, password) );
+    dispatch(checkingAuthentication(identifier, password));
 
 
 
@@ -37,13 +39,13 @@ const Login = () => {
 
   // Revisar si hay errores del backend, naturalmente, no habrá errores de back y front al mismo tiempo, ya que se hace la petición solo cuando ya se ha validado la data en el front
   useEffect(() => {
-      
-    if(errorMessageFrontend) {
+
+    if (errorMessageFrontend) {
       setErrors([errorMessageFrontend]);
-    } 
+    }
 
   }, [errorMessageFrontend])
-  
+
 
 
   const displayErrors = () => {
@@ -60,54 +62,56 @@ const Login = () => {
     } else {
       return null;
     }
-    
+
   }
 
 
   return (
-    <div className="content">
-      <h1 className="title__page">
-        Inicia Sesión
-      </h1>
+    <>
+      <HeaderHome></HeaderHome>
+      <div className="content">
+        <h1 className="title__page">
+          Iniciar Sesión
+        </h1>
 
-      <div className="card">
+        <div className="card">
 
-        {displayErrors()}
+          {displayErrors()}
 
-        <form className="card__form" onSubmit={onSubmit}>
-          <label className="card__label" htmlFor="email">Email o Username</label>
-          <input
-            className="card__input"
-            type="text"
-            name="identifier"
-            id="identifier"
-            placeholder="correo@gmail.com o fernandogutz"
-            value={identifier}
-            onChange={onInputChange}
-          />
-
-          <label className="card__label" htmlFor="password">Contraseña</label>
-          <div className="wrapper-input">
-            <span className='eyeBtn'  onClick={showPassword}><i className="fa-solid fa-eye"></i></span>
+          <form className="card__form" onSubmit={onSubmit}>
+            <label className="card__label" htmlFor="email">Email o Username</label>
             <input
               className="card__input"
-              type="password"
-              name="password"
-              id="password"
-              placeholder="***********"
-              value={password}
+              type="text"
+              name="identifier"
+              id="identifier"
+              placeholder="correo@gmail.com o fernandogutz"
+              value={identifier}
               onChange={onInputChange}
             />
-          </div>
 
-          <input 
-            disabled={isAuthenticating}
-            type="submit" 
-            value="Iniciar Sesión" 
-            className="btn btn-primary btn-form" 
-          />
-          
-          {/* Google Sign In 
+            <label className="card__label" htmlFor="password">Contraseña</label>
+            <div className="wrapper-input">
+              <span className='eyeBtn' onClick={showPassword}><i className="fa-solid fa-eye"></i></span>
+              <input
+                className="card__input"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="***********"
+                value={password}
+                onChange={onInputChange}
+              />
+            </div>
+
+            <input
+              disabled={isAuthenticating}
+              type="submit"
+              value="Iniciar Sesión"
+              className="btn btn-primary btn-form"
+            />
+
+            {/* Google Sign In 
           <input 
             disabled={isAuthenticating}
             type="submit" 
@@ -117,10 +121,12 @@ const Login = () => {
             onClick={ onGoogleSignIn} 
           />
           */}
-        </form>
-        <p className='card__form-bottom-msg'>¿No tienes una cuenta? <Link to='/sign-up' className='link-primary'>Registrarme</Link> </p>
+          </form>
+          <p className='card__form-bottom-msg'>¿No tienes una cuenta? <Link to='/sign-up' className='link-primary'>Registrarme</Link> </p>
+        </div>
       </div>
-    </div>
+    </>
+
   )
 }
 

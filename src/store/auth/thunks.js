@@ -42,13 +42,13 @@ export const checkingAuthentication = (identifier, password) => {
 
 
 
-export const registerUser = (email, username, password, getAds) => {
+export const registerUser = (email, username, gender, password, getAds) => {
     return async (dispatch) => {
         // 1) Activate Loading
         dispatch(checkingCredentials('checking'));
 
         // 2) Fetch DB registro usuario y dispatch de errores de registros
-        const registerResponse = await useRegisterUser(email, username, password, getAds);
+        const registerResponse = await useRegisterUser(email, username, gender, password, getAds);
 
         if(registerResponse.email && !registerResponse.error) {
 

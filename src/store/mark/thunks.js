@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setElements, setSuccessMsg } from "./markSlice";
+import { setActiveElement, setElements, setSuccessMsg } from "./markSlice";
 
 // Change Area
 export const createMark = (reps, element, userId, dateCreated, videoLink, jwt) => {
@@ -52,6 +52,7 @@ export const getElementsByArea = (area) => {
             //console.log(response.data.data);
             //console.log(response.data.data[0].attributes.name);
             dispatch(setElements(response.data.data));
+            dispatch(setActiveElement(response.data.data[0].id));
         }).catch(error => {
 
         });

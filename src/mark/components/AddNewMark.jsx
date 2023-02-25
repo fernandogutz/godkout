@@ -13,9 +13,8 @@ const AddNewMark = () => {
 
   // Setear una primera consulta a Pull Ups BW Masculino (male, Reps BW, Pull Ups)
   const initialForm = {
-    selectGender: 'male',
     selectArea: 'Reps BW',
-    selectElement: 1,
+    selectElement: '1',
     videoLink: '', // para evadir el warnig en consola (undefined to defined value)
     dateCreated: '',
     reps: ''
@@ -23,29 +22,35 @@ const AddNewMark = () => {
 
   const { elements, activeElement, successMsg } = useSelector(state => state.mark);
 
-  useEffect(() => {
-    if (initialForm.selectArea === 'Reps BW' && selectElement === 1) {
-      dispatch(getElementsByArea(initialForm.selectArea));
+  // Get form user data (dynamic)
+  const { selectArea, selectElement, videoLink, reps, dateCreated, onInputChange } = useForm(initialForm);
+  //console.log(selectElement);
 
-    }
+  useEffect(() => {
+    dispatch(getElementsByArea(selectArea));
 
   }, [])
 
 
-  // Get form user data (dynamic)
-  const { selectArea, selectElement, videoLink, reps, dateCreated, onInputChange } = useForm(initialForm);
+  useEffect(() => {
+
+    onInputChange({ target: { name: 'selectElement', value: activeElement } });
+
+
+  }, [activeElement])
 
 
   const onSubmit = async (event) => {
     event.preventDefault();
 
+    /*
     console.log(selectArea);
     console.log(selectElement);
     console.log(reps);
     console.log(videoLink);
     console.log(dateCreated);
     console.log(localStorage.getItem('jwt'));
-
+    */
 
     const response = await dispatch(createMark(reps, selectElement, localStorage.getItem('id'), dateCreated, videoLink, localStorage.getItem('jwt')));
     console.log(response);
@@ -56,7 +61,6 @@ const AddNewMark = () => {
   const updateElementsByArea = (event) => {
     dispatch(getElementsByArea(event.target.value));
     setScoreInput(event.target.value);
-
   }
 
   return (
@@ -91,7 +95,6 @@ const AddNewMark = () => {
             name='selectElement'
             className='card__select'
             onChange={onInputChange}
-            defaultValue={activeElement}
           >
             {elements.map(element => (
               <option key={element.attributes.name} value={element.id} element={element.id}>{element.attributes.name}</option>
@@ -111,10 +114,9 @@ const AddNewMark = () => {
             onChange={onInputChange}
           />
 
-          <label className='card__label' htmlFor="videoLink">Video (idealmente link YouTube)</label>
+          <label className='card__label' htmlFor="videoLink">Link Video (para obtener verificación oficial)</label>
           <input
             className="card__input"
-            required
             type="text"
             name="videoLink"
             id="videoLink"

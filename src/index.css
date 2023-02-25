@@ -63,6 +63,11 @@ input, button, select {
   padding: 32px 16px 80px 16px;
 }
 
+.content__section {
+  padding-bottom: 32px;
+  word-wrap: break-word;
+}
+
 a {
   text-decoration: none;
   color: var(--color2);
@@ -76,6 +81,13 @@ a {
 .title__page {
   color: var(--color1);
   margin-bottom: 8px;
+}
+
+.subtitle__page {
+  color: var(--color1);
+  font-size: 24px;
+  font-weight: bold;
+  margin: 8px 0px;
 }
 
 .description__page {
@@ -157,6 +169,11 @@ a {
   color: var(--primary);
   padding: 7px 11px;
   border: 1px solid var(--primary);
+}
+
+.btn-secondary:hover, .btn-secondary:active, .btn-secondary:disabled {
+  color: var(--primary2);
+  border: 1px solid var(--primary2);
 }
 
 .btn-actions {

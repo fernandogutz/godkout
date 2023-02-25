@@ -3,7 +3,7 @@ export const setScoreInput = (area) => {
         document.querySelector('#repsLabel').innerHTML = 'Reps';
 
     } else if (area == 'Lifting') {
-        document.querySelector('#repsLabel').innerHTML = 'KGS levantados';
+        document.querySelector('#repsLabel').innerHTML = 'Kgs levantados';
 
 
     } else if (area == 'Statics') {
