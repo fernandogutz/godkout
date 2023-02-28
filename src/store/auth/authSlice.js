@@ -9,11 +9,15 @@ export const authSlice = createSlice({
         displayName: null,
         username: null,
         profileImg: null,
+        bio: null,
         jwt: null,
         errorMessage: null, //login strapi msg
         errorMessageFrontend: null, //x mí en español
         errorMessageRegister: null, //register strapi msg
-        errorMessageRegisterFrontend: null //x mí en español
+        errorMessageRegisterFrontend: null, //x mí en español
+        successMsg: null,
+        updatingUserProfile: false,
+        usernameErrorMsg: null,
     },
     reducers: {
         login: (state, action) => {
@@ -91,10 +95,22 @@ export const authSlice = createSlice({
         },
         setUserData: (state, action) => {
             state.profileImg = action.payload.profileImg;
+            state.username = action.payload.username;
+            state.displayName = action.payload.displayName;
+            state.bio = action.payload.bio;
+        },
+        setUpdatingUserProfile: (state, action) => {
+            state.updatingUserProfile = action.payload;
+        },
+        setSuccessMsg : (state, action) => {
+            state.successMsg = action.payload;
+        },
+        setUsernameErrorMsg: (state, action) => {
+            state.usernameErrorMsg = action.payload;
         }
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { login, logout, checkingCredentials, setErrors, setErrorsRegister, setUserData } = authSlice.actions;
+export const { login, logout, checkingCredentials, setErrors, setErrorsRegister, setUserData, setUpdatingUserProfile, setSuccessMsg, setUsernameErrorMsg } = authSlice.actions;

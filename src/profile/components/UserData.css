@@ -11,8 +11,8 @@
 }
 
 .user__profile-img {
-    width: 132px;
-    height: 132px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     border-radius: 100%;
     margin-bottom: 12px;

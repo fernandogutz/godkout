@@ -61,7 +61,7 @@ const UserData = ({ user }) => {
         <div className="user">
 
             <div className="user__data-profile">
-                {user.profileImg ? <img src={`/avatars/${user.profileImg}`} className="user__profile-img" alt='Perfil Atleta de Calistenia'></img> : <img src='/avatars/zeus.png' className="user__profile-img" alt='Perfil Atleta de Calistenia'></img>}
+                {user.profileImg ? <img src={`/avatars/${user.profileImg}`} className="user__profile-img" alt='Perfil Atleta de Calistenia'></img> : <img src='/avatars/superman.png' className="user__profile-img" alt='Perfil Atleta de Calistenia'></img>}
                 <h2 className="user__displayName">{user.displayName}</h2>
                 <p className="user__bio">{user.bio}</p>
             </div>
@@ -73,8 +73,8 @@ const UserData = ({ user }) => {
                     className='select'
                     onChange={onChangeArea}
                 >
-                    <option value="Reps BW">Reps Peso Corporal</option>
-                    <option value="Lifting">Street Lifting</option>
+                    <option value="Reps BW">Max Reps</option>
+                    <option value="Lifting">Lifting (1RM)</option>
                     <option value="Statics">Estáticos</option>
                 </select>
 

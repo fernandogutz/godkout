@@ -55,6 +55,14 @@ input, button, select {
   border-radius: 8px;
 }
 
+textarea {
+  resize: none;
+}
+
+.width-100 {
+  width: 100%;
+}
+
 .main {
   width: 600px;
 }
@@ -110,6 +118,7 @@ a {
   background-color: var(--error);
   padding: 12px 8px 0px 8px;
   border-radius: 8px;
+  color: white;
 }
 
 .card__error-item {
@@ -124,6 +133,13 @@ a {
   padding: 12px 8px;
   border-radius: 8px;
   color: #101010;
+}
+
+.card__errorMsg {
+  background-color: var(--error);
+  padding: 12px 8px;
+  border-radius: 8px;
+  color: white;
 }
 
 .card__form-bottom-msg {
@@ -191,6 +207,7 @@ a {
   padding: 8px;
   color: var(--color2);
   width: auto;
+  border-radius: 12px;
 }
 
 .card__select {

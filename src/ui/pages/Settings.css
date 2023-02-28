@@ -5,10 +5,20 @@
 .settings__option {
     border-bottom: 1px solid var(--bg2);
     padding: 8px;
-    color: var(--color4);
+    color: var(--color2);
+    display: block;
+    width: 100%;
+}
+
+.settings__option:hover {
+    color: var(--color1);
 }
 
 .settings__logout {
     cursor: pointer;
-    color: var(--color2);
+    color: var(--error);
+}
+
+.settings__logout:hover {
+    color: var(--error);
 }

@@ -1,0 +1,16 @@
+.EditAvatar__img {
+    width: 100px;
+    border-radius: 100%;
+}
+
+.card--editAvatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+.imgAvatarContainer {
+    text-align: center;
+
+}

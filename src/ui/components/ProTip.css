@@ -1,0 +1,15 @@
+.ProTip {
+    background-color: var(--primary);
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+}
+
+.ProTip__msg {
+    color: var(--bg2);
+}
+
+.ProTip__msg a {
+    font-weight: bold;
+    color: var(--bg1);
+}

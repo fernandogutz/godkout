@@ -1,6 +1,9 @@
-import { checkingCredentials, login, setErrors, setErrorsRegister, setUserData } from "./authSlice";
+import { checkingCredentials, login, setErrors, setErrorsRegister, setSuccessMsg, setUpdatingUserProfile, setUserData, setUsernameErrorMsg } from "./authSlice";
 import { useCheckCredentials } from '../../auth/hooks/useCheckCredentials'
 import { useRegisterUser } from "../../auth/hooks/useRegisterUser";
+import useFetchPost from "../../hooks/useFetchPost";
+import { fetchPost } from "../../helpers/fetchPost";
+import axios from "axios";
 
 export const checkingAuthentication = (identifier, password) => {
     return async (dispatch) => {
@@ -11,7 +14,7 @@ export const checkingAuthentication = (identifier, password) => {
         const response = await useCheckCredentials(identifier, password);
 
         // 3) Disparar el reducer de login, que permite al usuario acceder a la app
-        if(!response.error && response.jwt) {
+        if (!response.error && response.jwt) {
             dispatch(login({
                 identifier,
                 password,
@@ -22,7 +25,7 @@ export const checkingAuthentication = (identifier, password) => {
                 id: response.id,
                 username: response.username
             }));
-            
+
             localStorage.setItem('id', response.id);
             localStorage.setItem('jwt', response.jwt);
             localStorage.setItem('email', response.email);
@@ -31,7 +34,7 @@ export const checkingAuthentication = (identifier, password) => {
             localStorage.setItem('profileImg', response.profileImg);
 
             dispatch(checkingCredentials('authenticated'));
-            
+
         } else {
             dispatch(setErrors(response.error));
             dispatch(checkingCredentials('not-authenticated'));
@@ -49,7 +52,7 @@ export const registerUser = (email, username, gender, password, getAds) => {
         // 2) Fetch DB registro usuario y dispatch de errores de registros
         const registerResponse = await useRegisterUser(email, username, gender, password, getAds);
 
-        if(registerResponse.email && !registerResponse.error) {
+        if (registerResponse.email && !registerResponse.error) {
 
             //Login
             console.log(registerResponse.email);
@@ -61,6 +64,66 @@ export const registerUser = (email, username, gender, password, getAds) => {
             dispatch(checkingCredentials('not-authenticated'));
         }
 
+    }
+}
+
+export const updateUser = (endpoint, jwt, postData) => {
+    return async (dispatch) => {
+        // 1) Activate Loading
+        dispatch(setUpdatingUserProfile(true));
+
+        // 2) Post Data USER
+        axios.put(endpoint, postData, {
+            headers: {
+                "Authorization": `bearer ${jwt}`,
+                "Content-Type": "application/json",
+            }
+        }).then(function (response) {
+            dispatch(setSuccessMsg('Usuario actualizado correctamente'));
+
+            dispatch(setUserData(response.data));
+            localStorage.setItem('profileImg', response.data.profileImg);
+            localStorage.setItem('email', response.data.email);
+            localStorage.setItem('displayName', response.data.displayName);
+            localStorage.setItem('username', response.data.username);
+            
+
+        }).catch(function (error) {
+            console.log(error);
+
+        });
+
+
+
+        dispatch(setUpdatingUserProfile(false));
+    }
+}
+
+export const getUserByUsername = (endpoint, jwt, username) => {
+    return async (dispatch) => {
+        // 1) Activate Loading
+        dispatch( setUpdatingUserProfile(true) );
+
+        // 2) Post Data USER
+        axios.get(endpoint, {
+            headers: {
+                "Authorization": `bearer ${jwt}`,
+                "Content-Type": "application/json",
+            }
+        }).then(function (response) {
+            console.log(response.data);
+            response.data.length > 0 && response.data[0].username != username
+                ? dispatch( setUsernameErrorMsg('El nombre de usuario ya existe') ) && dispatch( setUpdatingUserProfile(true) )
+                : dispatch( setUsernameErrorMsg(null) ) && dispatch( setUpdatingUserProfile(false) );
+
+        }).catch(function (error) {
+            console.log(error);
+
+        });
+
+
+
+        dispatch(setUpdatingUserProfile(false));
     }
 }
 

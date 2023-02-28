@@ -66,14 +66,7 @@ const AddNewMark = () => {
   return (
     <>
       <div className="card" id='filtersAddNewMarkContainer'>
-        {
-          successMsg ?
-            <div className="card__successMsg">
-              {successMsg}
-            </div>
 
-            : null
-        }
 
         <form className="card__form" onSubmit={onSubmit}>
           <label className='card__label' htmlFor="selectArea">Área</label>
@@ -84,8 +77,8 @@ const AddNewMark = () => {
             onChange={onInputChange}
             onChangeCapture={updateElementsByArea}
           >
-            <option value="Reps BW">Reps Peso Corporal</option>
-            <option value="Lifting">Street Lifting</option>
+            <option value="Reps BW">Max Reps</option>
+            <option value="Lifting">Lifting (1RM)</option>
             <option value="Statics">Estáticos</option>
           </select>
 
@@ -142,6 +135,15 @@ const AddNewMark = () => {
             value="Crear Marca"
             className="btn btn-primary btn-form"
           />
+
+          {
+            successMsg ?
+              <div className="card__successMsg">
+                {successMsg}
+              </div>
+
+              : null
+          }
         </form>
 
       </div>

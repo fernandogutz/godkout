@@ -20,7 +20,7 @@ const HeaderHome = () => {
                             {
                                 profileImg
                                     ? <img src={`/avatars/${profileImg}`} className="header__profile-img"></img>
-                                    : <img src='/avatars/zeus.png' className="header__profile-img"></img>
+                                    : <img src='/avatars/superman.png' className="header__profile-img"></img>
                             }
 
                         </Link>

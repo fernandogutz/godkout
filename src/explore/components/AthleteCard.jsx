@@ -8,7 +8,7 @@ const AthleteCard = ({athlete}) => {
             {
               athlete.profileImg 
                 ? <img src={`/avatars/${athlete.profileImg}`} className="AthleteCard__img"></img>
-                : <img src='/avatars/zeus.png' className="AthleteCard__img"></img>
+                : <img src='/avatars/superman.png' className="AthleteCard__img"></img>
             }
             <p className="AthleteCard__username link-primary">@{athlete.username}</p>
         </div>

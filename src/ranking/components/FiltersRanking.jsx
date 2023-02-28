@@ -92,8 +92,8 @@ const FiltersRanking = () => {
                         onChange={onInputChange}
                         onChangeCapture={updateElementsByArea}
                     >
-                        <option value="Reps BW">Reps Peso Corporal</option>
-                        <option value="Lifting">Lifting</option>
+                        <option value="Reps BW">Max Reps</option>
+                        <option value="Lifting">Lifting (1RM)</option>
                         <option value="Statics">Estáticos</option>
                     </select>
 
